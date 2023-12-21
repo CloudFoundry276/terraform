@@ -6,17 +6,27 @@
 #               script to create aws ec2 instance.
 ########################################################
 
+# provider name registry
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
 # configure the aws provider
 provider "aws" {
-    region = "ap-south-1"
+  region = "ap-south-1"  
 }
 
 # create aws ec2 instance
-resource "ec2_instance" "example" {
-    ami = ami-0a0f1259dd1c90938
-    instance_type = "t2.micro"
+resource "ec2_instance" "name" {
+  ami = ami-0a0f1259dd1c90938
+  instance_type = "t2.micro"
 
-    tags = {
-        Name = "terraformlab01"
-    }
+  tags = {
+    Name = "terraformlab01"
+  }
 }
