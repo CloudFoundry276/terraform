@@ -48,7 +48,7 @@ resource "aws_instance" "terraformlab02" {
 resource "aws_security_group" "tfsglab02" {
   name = "tfsglab02"
   description = "allow tls inbound traffic on port 8080"
-  ingress = {
+  ingress {
     description = "allow port 8080"
     from_port = 8080
     to_port = 8080
