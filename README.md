@@ -1,2 +1,2 @@
 # terraform
-terraform lads &amp; projects
+terraform labs &amp; projects
