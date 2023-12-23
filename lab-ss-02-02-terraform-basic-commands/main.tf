@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 # configure aws ec2 instance
-resource "aws_instance" "tfBasicCommands" {
+resource "aws_instance" "TerraformBasicCommands" {
   ami = "ami-0a0f1259dd1c90938"
   instance_type = "t2.micro"
 }
