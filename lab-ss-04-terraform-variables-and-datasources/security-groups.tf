@@ -17,7 +17,7 @@ resource "aws_security_group" "sg-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "sg-ssh"
+    Name = "sgssh"
   }
 }
 
@@ -47,6 +47,6 @@ resource "aws_security_group" "sg-web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "sg-web"
+    Name = "sgweb"
   }
 }
