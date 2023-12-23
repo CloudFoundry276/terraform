@@ -4,10 +4,6 @@ data "aws_ami" "amzlinux2023" {
   most_recent = true
   owners = [ "amazon" ]
   filter {
-    name = "name"
-    values = [ "amzn2023-ami-hvm-*" ]
-  }
-  filter {
     name = "root-device-type"
     values = [ "ebs" ]
   }
