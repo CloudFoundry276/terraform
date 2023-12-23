@@ -12,7 +12,7 @@ resource "aws_instance" "tfvards" {
   instance_type = var.instance_type
   user_data = file("${path.module}/install-apache-server.sh")
   key_name = var.instance_keypair
-  vpc_security_group_ids = [aws_security_group.sg-labss04-ssh.id, aws_security_group.sg-labss04-web.id]
+  vpc_security_group_ids = [aws_security_group.vpc-labss04-ssh.id, aws_security_group.vpc-labss04-web.id]
   tags = {
     Name = "TerraformVariablesAndDatasources"
   }

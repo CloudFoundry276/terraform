@@ -1,6 +1,6 @@
 # security group for ssh traffic
-resource "aws_security_group" "sg-labss04-ssh" {
-  name = "sg-labss04-ssh"
+resource "aws_security_group" "vpc-labss04-ssh" {
+  name = "vpc-labss04-ssh"
   description = "aws security group for ssh traffic"
   ingress {
     description = "allow port 22"
@@ -17,13 +17,13 @@ resource "aws_security_group" "sg-labss04-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "sg-labss04-ssh"
+    Name = "vpc-labss04-ssh"
   }
 }
 
 # security group for web traffic
-resource "aws_security_group" "sg-labss04-web" {
-  name = "sg-labss04-web"
+resource "aws_security_group" "vpc-labss04-web" {
+  name = "vpc-labss04-web"
   description = "aws security group for web traffic"
   ingress {
     description = "allow port 80"
@@ -47,6 +47,6 @@ resource "aws_security_group" "sg-labss04-web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "sg-labss04-web"
+    Name = "vpc-labss04-web"
   }
 }
