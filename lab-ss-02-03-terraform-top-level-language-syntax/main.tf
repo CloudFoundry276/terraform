@@ -20,7 +20,7 @@ terraform {
   backend "s3" {
     bucket = "tfstate-bucket"
     key = "terraform.tfstate"
-    region = var.aws_region
+    region = "ap-south-1"
     dynamodb_table = "tbl_tfstate"
   }
 }
