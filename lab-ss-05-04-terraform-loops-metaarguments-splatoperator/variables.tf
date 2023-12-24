@@ -16,5 +16,5 @@ variable "instance_type" {
 variable "instance_keypair" {
   description = "aws ec2 key pair that need to be associated with ec2 instance"
   type = string
-  default = "TerraformKeyPair-labss0504"
+  default = "TerraformKeyPair-USEast1"
 }
