@@ -24,12 +24,37 @@ provider "aws" {
 }
 
 # configure aws security group
+resource "aws_security_group" "labdts02-ssh" {
+  name = "labdts02-ssh"
+  ingress {
+    description = "allow port 22"
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    description = "outbound ssh"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_security_group" "labdts02-web" {
   name = "labdts02-web"
   ingress {
     description = "allow port 80"
     from_port = 80
     to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "allow port 443"
+    from_port = 443
+    to_port = 443
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -42,29 +67,11 @@ resource "aws_security_group" "labdts02-web" {
   }
 }
 
-resource "aws_security_group" "labdts02-custom" {
-  name = "labdts02-custom"
-  ingress {
-    description = "allow port 8080"
-    from_port = 8080
-    to_port = 8080
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    description = "outbound custom"
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 # configure aws ec2 instance
 resource "aws_instance" "labdts02" {
   ami = "ami-0a0f1259dd1c90938"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.labdts02-web.id, aws_security_group.labdts02-custom.id]
+  vpc_security_group_ids = [aws_security_group.labdts02-ssh.id, aws_security_group.labdts02-web.id]
   user_data = <<-EOF
   #!/bin/bash
   sudo yum update -y
