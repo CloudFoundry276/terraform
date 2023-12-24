@@ -14,7 +14,7 @@ data "aws_ec2_instance_type_offerings" "ds050301" {
   }
   filter {
     name = "location"
-    values = ["us-east-1e"]
+    values = ["us-east-1a"]
   }
   location_type = "availability-zone"
 }
