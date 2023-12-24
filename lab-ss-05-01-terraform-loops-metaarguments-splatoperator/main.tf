@@ -8,12 +8,13 @@
 # configure aws ec2 instance
 resource "aws_instance" "labss0501" {
   ami = data.aws_ami.amzlinux2023.id
-  instance_type = var.instance_type
+  # instance_type = var.instance_type
+  instance_type = var.instance_type_list[1]
   user_data = file("${path.module}/install-apache-server.sh")
   key_name = var.instance_keypair
   vpc_security_group_ids = [aws_security_group.vpc-labss05-ssh.id, aws_security_group.vpc-labss05-web.id]
-  count = 2
+  count = 3
   tags = {
-    Name = "count-demo-${count.index}"
+    Name = "count-ldemo-${count.index}"
   }
 }
