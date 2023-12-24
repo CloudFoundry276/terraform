@@ -24,6 +24,17 @@ provider "aws" {
 }
 
 # configure aws security group
+resource "aws_security_group" "labdts02-web" {
+  name = "labdts02-web"
+  ingress {
+    description = "allow port 80"
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_security_group" "labdts02-custom" {
   name = "labdts02-custom"
   ingress {
@@ -39,7 +50,7 @@ resource "aws_security_group" "labdts02-custom" {
 resource "aws_instance" "labdts02" {
   ami = "ami-0a0f1259dd1c90938"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.labdts02-custom.id]
+  vpc_security_group_ids = [aws_security_group.labdts02-web.id, aws_security_group.labdts02-custom.id]
   user_data = <<-EOF
   #!/bin/bash
   sudo yum update -y
