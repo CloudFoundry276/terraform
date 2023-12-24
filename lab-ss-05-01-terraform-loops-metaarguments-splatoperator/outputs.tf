@@ -1,7 +1,7 @@
 # for loop with list output variable
 output "for_loop_list" {
   description = "for loop with list"
-  value = [for instance in awsaws_instance.labss0501: instance.public_dns]
+  value = [for instance in aws_instance.labss0501: instance.public_dns]
 }
 
 # for loop with map output variable
