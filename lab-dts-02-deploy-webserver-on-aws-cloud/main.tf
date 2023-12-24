@@ -33,6 +33,13 @@ resource "aws_security_group" "labdts02-web" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  egress {
+    description = "outbound web"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 resource "aws_security_group" "labdts02-custom" {
@@ -42,6 +49,13 @@ resource "aws_security_group" "labdts02-custom" {
     from_port = 8080
     to_port = 8080
     protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    description = "outbound custom"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
