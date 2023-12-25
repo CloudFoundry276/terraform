@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "labdts04s3bucket" {
 resource "aws_s3_bucket_versioning" "labdts04s3bucketversion" {
   bucket = aws_s3_bucket.labdts04s3bucket.id
   versioning_configuration {
-    status = "enabled"
+    status = "Enabled"
   }
 }
 
