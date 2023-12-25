@@ -49,12 +49,3 @@ resource "aws_dynamodb_table" "labdts04s3buckettbl" {
     type = "S"
   }
 }
-
-# configure aws ec2 instance
-resource "aws_instance" "labdts04ec2" {
-  ami = "ami-0a0f1259dd1c90938"
-  instance_type = var.instance_type
-  tags = {
-    name = "labdts04ec2"
-  }
-}
