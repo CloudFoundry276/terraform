@@ -23,7 +23,7 @@ provider "aws" {
 
 # configure vault provider
 provider "vault" {
-  address = "<>:8200"
+  address = "http://127.0.0.1:8200"
   skip_child_token = true
   auth_login {
     path = "auth/approle/login"
