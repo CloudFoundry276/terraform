@@ -1,3 +1,10 @@
+####################################################################################################
+# Date: 01/02/2024
+# Author: Sagar Pitalekar
+# Title: Terraform TFVars
+# Description: In this lab, we demonstrate terraform tfvars.
+####################################################################################################
+
 # configure aws provider
 provider "aws" {
   region = "ap-south-1"
