@@ -29,7 +29,7 @@ variable "cidr" {
 # aws key-pair
 resource "aws_key_pair" "labiam05-keypair" {
   key_name = "labiam05-keypair"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("/home/ec2-user/.ssh/id_rsa.pub")
 }
 
 # aws vpc
@@ -113,7 +113,7 @@ resource "aws_instance" "labiam05-ec2" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = file("~/.ssh/id_rsa")
+    private_key = file("/home/ec2-user/.ssh/id_rsa")
     host = self.public_ip
   }
 
