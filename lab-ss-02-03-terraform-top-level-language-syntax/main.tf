@@ -6,8 +6,9 @@
 #              variable(s) & datasource.
 ####################################################################################################
 
-# providers version configuration
+# terraform required version & providers configuration
 terraform {
+  required_version = "~> 1.6"
   required_providers {
     aws = {
       source = "hashicorp/aws"
@@ -16,50 +17,50 @@ terraform {
   }
 }
 
-# aws region variable
+# input variable for aws region
 variable "aws_region" {
   description = "region in which aws resources to be created"
   type = string
   default = "ap-south-1"
 }
 
-# variable aws ec2 instance type
+# input variable for instance type
 variable "instance_type" {
   description = "ec2 instance type"
   type = string
   default = "t2.micro"
 }
 
-# variable aws ec2 instance key pair
+# input variable for Key Pair
 variable "instance_keypair" {
   description = "aws ec2 key pair that need to be associated with ec2 instance"
   type = string
   default = "TerraformKeyPair"
 }
 
-# configure aws provider
+# cloud i.e. aws provider configuration
 provider "aws" {
   region = var.aws_region
   profile = "default"
 }
 
-# configure aws ec2 instance
-resource "aws_instance" "tftlls" {
+# aws instance resource configuration
+resource "aws_instance" "lab-ss-02-03" {
   ami = "ami-0a0f1259dd1c90938"
   instance_type = var.instance_type
   key_name = var.instance_keypair
   tags = {
-    Name = "TerraformTopLevelLanguageSyntax"
+    Name = "lab-ss-02-03"
   }
 }
 
-# fetch/get latest ami id for amazon linux 2 os
+# data source for aws ami 2023
 data "aws_ami" "amzlinux2" {
   most_recent = true
   owners = [ "amazon" ]
   filter {
     name = "name"
-    values = [ "amzn2-ami-hvm-*" ]
+    values = [ "al2023-ami-*" ]
   }
   filter {
     name = "root-device-type"
@@ -75,7 +76,7 @@ data "aws_ami" "amzlinux2" {
   }
 }
 
-# terraform output values
+# output variable to verify & display public ip address of created resource i.e. ec2 instance
 output "ec2_instance_publicip" {
   description = "ec2 instance public ip"
   value = aws_instance.tftlls.public_ip
