@@ -79,5 +79,5 @@ data "aws_ami" "amzlinux2" {
 # output variable to verify & display public ip address of created resource i.e. ec2 instance
 output "ec2_instance_publicip" {
   description = "ec2 instance public ip"
-  value = aws_instance.tftlls.public_ip
+  value = aws_instance.lab-ss-02-03.public_ip
 }
