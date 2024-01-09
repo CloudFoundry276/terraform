@@ -5,7 +5,7 @@
 # Description: In this lab, we demonstrate terraform basic commands to create single ec2 instance.
 ####################################################################################################
 
-# terraform required providers configuration
+# terraform required version & providers configuration
 terraform {
   required_version = "~> 1.6"
   required_providers {
