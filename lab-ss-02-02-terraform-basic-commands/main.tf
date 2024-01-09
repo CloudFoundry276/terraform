@@ -5,7 +5,7 @@
 # Description: In this lab, we demonstrate terraform basic commands to create single ec2 instance.
 ####################################################################################################
 
-# providers version configuration
+# terraform required providers configuration
 terraform {
   required_providers {
     aws = {
@@ -15,17 +15,17 @@ terraform {
   }
 }
 
-# configure aws provider
+# cloud i.e. aws provider configuration
 provider "aws" {
   region = "ap-south-1"
   profile = "default"
 }
 
-# configure aws ec2 instance
-resource "aws_instance" "TerraformBasicCommands" {
+# aws instance resource configuration
+resource "aws_instance" "lab-ss-02-02" {
   ami = "ami-0a0f1259dd1c90938"
   instance_type = "t2.micro"
   tags = {
-    Name = "TerraformBasicCommands"
+    Name = "lab-ss-02-02"
   }
 }
