@@ -6,11 +6,11 @@
 ####################################################################################################
 
 # configure aws ec2 instance
-resource "aws_instance" "tfspr" {
+resource "aws_instance" "lab-ss-03" {
   ami = "ami-0a0f1259dd1c90938"
   instance_type = "t2.micro"
   user_data = file("${path.module}/install-apache-server.sh")
   tags = {
-    Name = "TerraformSettingsProvidersAndResources"
+    Name = "lab-ss-03"
   }
 }
