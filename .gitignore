@@ -32,3 +32,6 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# ignore private keys
+terraform-aws-labs/lab-04-terraform-variables-datasources/private-key
